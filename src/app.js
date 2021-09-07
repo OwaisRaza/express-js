@@ -29,8 +29,16 @@ app.get("/about", (req, res) => {
   res.render("about");
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello world!");
+app.get("/about/*", (req, res) => {
+  res.render("404", {
+    errorMessage: "404 about Page not found",
+  });
+});
+
+app.get("*", (req, res) => {
+  res.render("404", {
+    errorMessage: "404 Page not found",
+  });
 });
 
 app.listen(8000, () => {
